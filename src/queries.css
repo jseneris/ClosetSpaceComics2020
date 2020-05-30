@@ -1,0 +1,53 @@
+@media only screen and (min-width: 1381px) {
+  .issue:nth-child(6n + 1) {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 1381px) {
+  .issue:nth-child(4n + 1) {
+    margin-left: 0;
+  }
+  .span-1-of-6 {
+    width: 23.8%;
+  }
+
+  .issue:nth-child(10n + 1) {
+    margin-left: 0;
+  }
+
+  .span-1-of-12 {
+    width: 8.56%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .issue:nth-child(2n + 1) {
+    margin-left: 0;
+  }
+  .span-1-of-6 {
+    width: 49.2%;
+  }
+
+  .issue:nth-child(6n + 1) {
+    margin-left: 0;
+  }
+
+  .span-1-of-12 {
+    width: 15.33%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .span-1-of-6 {
+    width: 100%;
+  }
+
+  .issue:nth-child(3n + 1) {
+    margin-left: 0;
+  }
+
+  .span-1-of-12 {
+    width: 32.26%;
+  }
+}
