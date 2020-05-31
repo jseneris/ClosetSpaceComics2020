@@ -1,4 +1,5 @@
 import React from 'react';
+import { AddCircleOutline } from '@material-ui/icons';
 
 export const LocationList = (props) => {
   const locationList = props.Locations.map((location) => {
@@ -19,6 +20,9 @@ export const LocationList = (props) => {
 
   return (
     <div className="row location-list">
+      <div className="close-button">
+        <AddCircleOutline />
+      </div>
       <ul>{locationList}</ul>
     </div>
   );

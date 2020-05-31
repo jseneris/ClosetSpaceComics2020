@@ -118,7 +118,7 @@ section {
   margin-top: 20px;
 }
 
-.hero-banner {
+#hero-banner {
   background-image: url(background_search_desktop.jpg);
   background-size: cover;
   background-position: center;
@@ -199,7 +199,7 @@ nav {
 /*---------------------------------------*/
 /*Section Collection*/
 /*---------------------------------------*/
-.section-collection {
+#section-collection {
   background-color: #f4f4f4;
   text-align: center;
 }
@@ -256,8 +256,10 @@ nav {
 /*---------------------------------------*/
 /*About section*/
 /*---------------------------------------*/
-.section-about-us {
+#section-about-us {
   background-color: #f4f4f4;
+  background-color: #f4f4f4;
+  text-align: center;
 }
 
 .about-div {

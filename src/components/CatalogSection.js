@@ -58,7 +58,7 @@ export class CatalogSection extends Component {
   render() {
     if (this.state.zoomIssue) {
       return (
-        <section className="section-catalog">
+        <section id="section-catalog">
           <IssueZoom
             Issue={this.state.zoomIssue}
             IssueList={this.state.zoomIssueList}

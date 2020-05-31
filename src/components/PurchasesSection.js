@@ -4,7 +4,7 @@ import { PurchaseList } from './PurchaseList';
 export class PurchaseSection extends Component {
   render() {
     return (
-      <section className="section-purchases">
+      <section id="section-purchases">
         <PurchaseList Purchases={this.props.Purchases.purchases}></PurchaseList>
       </section>
     );

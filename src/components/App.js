@@ -122,31 +122,17 @@ class App extends Component {
     return (
       <div className="App">
         <HeaderSection></HeaderSection>
-        <a className="no-show" id="section-catalog" href="#section-catalog">
-          &nbsp;
-        </a>
+        <a name="section-catalog"></a>
         <CatalogSection
           Filters={this.state.filters}
           Issues={this.state.issues}
           HandleDateChange={this.handleDateChange}
         />
-        <a
-          className="no-show"
-          id="section-collection"
-          href="#section-collection"
-        >
-          &nbsp;
-        </a>
+        <a name="section-collection"></a>
         <CollectionSection Locations={this.state.locations}></CollectionSection>
-        <a className="no-show" id="section-purchases" href="#section-purchases">
-          &nbsp;
-        </a>
+        <a name="section-purchases"></a>
         <PurchaseSection Purchases={this.state.purchases}></PurchaseSection>
-        <a className="no-show" id="section-about-us" href="#section-about-us">
-          &nbsp;
-        </a>
-        <div className="about-header">Stuff To Do</div>
-
+        <a name="section-about-us"></a>
         <AboutUsSection></AboutUsSection>
         <FooterSection></FooterSection>
       </div>

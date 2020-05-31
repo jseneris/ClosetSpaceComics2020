@@ -5,7 +5,7 @@ import { BoxList } from './BoxList';
 export class CollectionSection extends Component {
   render() {
     return (
-      <section className="section-collection">
+      <section id="section-collection">
         <LocationList Locations={this.props.Locations}></LocationList>
         <BoxList
           Boxes={

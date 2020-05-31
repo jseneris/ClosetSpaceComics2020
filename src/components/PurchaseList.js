@@ -1,4 +1,5 @@
 import React from 'react';
+import { AddCircleOutline } from '@material-ui/icons';
 
 export const PurchaseList = (props) => {
   const purchaseList = props.Purchases.map((purchase) => {
@@ -19,6 +20,9 @@ export const PurchaseList = (props) => {
 
   return (
     <div className="row purchase-list">
+      <div className="close-button">
+        <AddCircleOutline />
+      </div>
       <ul>{purchaseList}</ul>
     </div>
   );

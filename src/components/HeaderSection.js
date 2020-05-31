@@ -5,7 +5,7 @@ export const HeaderSection = () => {
     <header>
       <nav>
         <div className="row">
-          <div className="col span-1-of-10">
+          <div className="col span-2-of-10">
             Demo
             <span>
               (<span className="login-link">sign in</span>)
@@ -37,7 +37,7 @@ export const HeaderSection = () => {
           </div>
         </div>
       </nav>
-      <div className="hero-banner"></div>
+      <div id="hero-banner"></div>
     </header>
   );
 };
