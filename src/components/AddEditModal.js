@@ -23,15 +23,33 @@ export class AddEditModal extends Component {
   };
 
   saveChanges = () => {
-    this.props.SaveChanges({
-      payload: { description: this.state.description },
-    });
+    if (this.props.Action === 'add') {
+      this.props.SaveChanges({
+        payload: { description: this.state.description },
+      });
+    } else {
+      this.props.SaveChanges({
+        payload: {
+          description: this.state.description,
+          locationId: this.props.LocationId,
+        },
+      });
+      this.handleClose();
+    }
   };
+
+  renderButton() {
+    if (this.props.Action === 'add') {
+      return <AddCircleOutline onClick={this.handleClickOpen} />;
+    } else {
+      return <Edit onClick={this.handleClickOpen} />;
+    }
+  }
 
   render() {
     return (
       <div>
-        <AddCircleOutline onClick={this.handleClickOpen} />
+        {this.renderButton()}
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

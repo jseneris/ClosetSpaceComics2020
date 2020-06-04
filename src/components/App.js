@@ -61,7 +61,7 @@ class App extends Component {
     this.setState({ filters: filterList, issues: issueList });
   };
 
-  handleEditLocation = async (payload) => {
+  handleAddLocation = async (payload) => {
     const response = await axios.post(
       '/user/locations',
       {
@@ -93,6 +93,38 @@ class App extends Component {
 
     this.state.locations.unshift(newLocation);
     return newLocation;
+  };
+
+  handleEditLocation = async (payload) => {
+    const response = await axios.post(
+      `/user/locations/${payload.payload.locationId}`,
+      {
+        name: payload.payload.description,
+      },
+      {
+        headers: {
+          userId: 0,
+        },
+      }
+    );
+
+    if (response.data !== null) {
+      var newLocation = {
+        id: response.data.Id,
+        name: response.data.Name,
+        imageUrl: response.data.ImageUrl,
+      };
+
+      var newLocations = this.state.locations.map((location) => {
+        if (location.id === newLocation.id) {
+          location.name = newLocation.name;
+          location.imageUrl = newLocation.imageUrl;
+        }
+        return location;
+      });
+
+      this.setState({ locations: newLocations });
+    }
   };
 
   getCollections = async (userId) => {
@@ -165,6 +197,7 @@ class App extends Component {
         <a name="section-collection"></a>
         <CollectionSection
           Locations={this.state.locations}
+          HandleAddLocation={this.handleAddLocation}
           HandleEditLocation={this.handleEditLocation}
         ></CollectionSection>
         <a name="section-purchases"></a>

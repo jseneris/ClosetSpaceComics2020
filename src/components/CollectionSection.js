@@ -33,7 +33,7 @@ export class CollectionSection extends Component {
   handleLocationSelection = (location) => {
     if (
       this.state.activeLocation === null ||
-      this.state.activeLocation.id != location.id
+      this.state.activeLocation.id !== location.id
     ) {
       this.setState({ activeLocation: location });
     } else {
@@ -41,10 +41,14 @@ export class CollectionSection extends Component {
     }
   };
 
-  handleEditLocation = async (payload) => {
-    let newLocation = await this.props.HandleEditLocation(payload);
+  handleAddLocation = async (payload) => {
+    let newLocation = await this.props.HandleAddLocation(payload);
     this.setState({ activeLocation: newLocation });
     return newLocation;
+  };
+
+  handleEditLocation = (payload) => {
+    this.props.HandleEditLocation(payload);
   };
 
   handleBoxSelection = (box) => {
@@ -68,6 +72,7 @@ export class CollectionSection extends Component {
         <LocationList
           Locations={this.props.Locations}
           HandleLocationSelection={this.handleLocationSelection}
+          HandleAddLocation={this.handleAddLocation}
           HandleEditLocation={this.handleEditLocation}
         ></LocationList>
         {this.renderBoXList()}

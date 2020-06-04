@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { AddCircleOutline, Edit } from '@material-ui/icons';
 import { AddEditModal } from './AddEditModal';
 
 export class LocationList extends Component {
   state = { activeLocationId: null };
 
-  handleLocationEdit = async (payload) => {
-    let newLocation = await this.props.HandleEditLocation(payload);
+  handleLocationAdd = async (payload) => {
+    let newLocation = await this.props.HandleAddLocation(payload);
     this.setState({ activeLocationId: newLocation.id });
+  };
+
+  handleLocationEdit = (payload) => {
+    this.props.HandleEditLocation(payload);
   };
 
   onLocationClick = (location) => {
@@ -49,10 +52,17 @@ export class LocationList extends Component {
 
   renderButton() {
     if (this.state.activeLocationId) {
-      return <Edit />;
+      //     return <Edit />;
+      return (
+        <AddEditModal
+          Action="edit"
+          LocationId={this.state.activeLocationId}
+          SaveChanges={this.handleLocationEdit}
+        />
+      );
     } else {
       // return <AddCircleOutline />;
-      return <AddEditModal SaveChanges={this.handleLocationEdit} />;
+      return <AddEditModal Action="add" SaveChanges={this.handleLocationAdd} />;
     }
   }
 
