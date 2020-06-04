@@ -1,5 +1,9 @@
 @media only screen and (min-width: 1381px) {
-  .issue:nth-child(6n + 1) {
+  #section-catalog .issue:nth-child(6n + 1) {
+    margin-left: 0;
+  }
+
+  #section-collection .issue:nth-child(10n + 1) {
     margin-left: 0;
   }
 }

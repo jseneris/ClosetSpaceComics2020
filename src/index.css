@@ -224,16 +224,16 @@ nav {
   width: 60px;
 }
 
-.box-issue-list {
+#section-collection > .issue-list {
   text-align: center;
 }
 
-.box-issue-list .issue {
+#section-collection > .issue-list .issue {
   max-height: 150px;
   overflow: hidden;
 }
 
-.box-issue-list .issue img {
+#section-collection > .issue-list .issue img {
   height: 150px;
 }
 
@@ -314,8 +314,17 @@ nav {
   width: auto;
 }
 
+.location-list,
+.box-list {
+  position: relative;
+}
+
 .close-button {
-  margin: 5px 5px 0 0;
-  float: right;
+  /* margin: 5px 5px 0 0;
+  float: right; */
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: green;
   cursor: pointer;
 }

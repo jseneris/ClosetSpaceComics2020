@@ -61,6 +61,40 @@ class App extends Component {
     this.setState({ filters: filterList, issues: issueList });
   };
 
+  handleEditLocation = async (payload) => {
+    const response = await axios.post(
+      '/user/locations',
+      {
+        name: payload.payload.description,
+      },
+      {
+        headers: {
+          userId: 0,
+        },
+      }
+    );
+
+    if (response.data === null) {
+      return null;
+    }
+
+    var newLocation = {
+      id: response.data.Id,
+      name: response.data.Name,
+      imageUrl: response.data.ImageUrl,
+      boxes: response.data.Boxes.map((box) => {
+        return {
+          id: box.Id,
+          name: box.Name,
+          imageUrl: box.ImageUrl,
+        };
+      }),
+    };
+
+    this.state.locations.unshift(newLocation);
+    return newLocation;
+  };
+
   getCollections = async (userId) => {
     const response = await axios.get('/user/collection', {
       headers: {
@@ -129,7 +163,10 @@ class App extends Component {
           HandleDateChange={this.handleDateChange}
         />
         <a name="section-collection"></a>
-        <CollectionSection Locations={this.state.locations}></CollectionSection>
+        <CollectionSection
+          Locations={this.state.locations}
+          HandleEditLocation={this.handleEditLocation}
+        ></CollectionSection>
         <a name="section-purchases"></a>
         <PurchaseSection Purchases={this.state.purchases}></PurchaseSection>
         <a name="section-about-us"></a>

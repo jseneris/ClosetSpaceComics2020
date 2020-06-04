@@ -68,7 +68,7 @@ export class CatalogSection extends Component {
       );
     } else {
       return (
-        <section className="section-catalog">
+        <section id="section-catalog">
           <div className="row search-bar">
             <SearchBar OnDateChange={this.onDateChange}></SearchBar>
           </div>

@@ -1,31 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { AddCircleOutline } from '@material-ui/icons';
 
-export const BoxList = (props) => {
-  const boxList = props.Boxes.map((box) => {
-    return (
-      <li className={`col box-detail`} key={box.id}>
-        <div>
-          <img
-            className="box-image"
-            src={box.imageUrl}
-            alt={box.name}
-            title={box.name}
-          />
-        </div>
-        <span>{box.name}</span>
-      </li>
-    );
-  });
+export class BoxList extends Component {
+  state = { activeBoxId: null };
 
-  return (
-    <div className="row  box-list">
-      <div className="close-button">
-        <AddCircleOutline />
+  onBoxClick = (box) => {
+    this.props.HandleBoxSelection(box);
+    this.setState({ activeBoxId: box.id });
+  };
+
+  boxList = () => {
+    return this.props.Boxes.map((box) => {
+      let classString = `col box-detail ${
+        !this.state.activeBoxId || box.id === this.state.activeBoxId
+          ? 'active'
+          : 'inactive'
+      }`;
+
+      return (
+        <li
+          className={classString}
+          key={box.id}
+          onClick={(e) => this.onBoxClick(box)}
+        >
+          <div>
+            <img
+              className="box-image"
+              src={box.imageUrl}
+              alt={box.name}
+              title={box.name}
+            />
+          </div>
+          <span>{box.name}</span>
+        </li>
+      );
+    });
+  };
+
+  render() {
+    return (
+      <div className="row  box-list">
+        <div className="close-button">
+          <AddCircleOutline />
+        </div>
+        <ul>{this.boxList()}</ul>
       </div>
-      <ul>{boxList}</ul>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default BoxList;
