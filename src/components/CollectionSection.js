@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from '../api/ClosetSpaceComicsApi';
-import { LocationList } from './LocationList';
-import { BoxList } from './BoxList';
 import { IssueList } from './IssueList';
 import { ItemList } from './ItemList';
 
@@ -73,6 +71,7 @@ export class CollectionSection extends Component {
       return (
         <ItemList
           ItemType="box"
+          ActiveLocation={this.state.activeLocation}
           Items={this.state.activeLocation.boxes}
           HandleItemSelection={this.handleBoxSelection}
           HandleAdd={this.handleAddBox}

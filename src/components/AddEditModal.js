@@ -15,7 +15,9 @@ export class AddEditModal extends Component {
   };
 
   componentWillReceiveProps(newProps) {
-    if (newProps.Item !== this.props.Item) {
+    if (!newProps.Item) {
+      this.setState({ description: '' });
+    } else if (newProps.Item !== this.props.Item) {
       this.setState({ description: newProps.Item.name });
     }
   }
@@ -34,6 +36,7 @@ export class AddEditModal extends Component {
     } else {
       this.props.SaveChanges({
         description: this.state.description,
+        itemId: this.props.Item.id,
         locationId: this.props.LocationId,
       });
       this.handleClose();

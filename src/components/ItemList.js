@@ -55,7 +55,9 @@ export class ItemList extends Component {
         <AddEditModal
           Action="edit"
           Item={this.state.activeItem}
-          LocationId={this.state.activeId}
+          LocationId={
+            this.props.ActiveLocation ? this.props.ActiveLocation.id : null
+          }
           SaveChanges={this.handleEdit}
         />
       );

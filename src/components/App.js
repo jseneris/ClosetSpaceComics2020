@@ -161,7 +161,7 @@ class App extends Component {
 
   handleEditBox = async (payload) => {
     const response = await axios.post(
-      `/user/locations/${payload.locationId}/boxes/${payload.boxId}`,
+      `/user/locations/${payload.locationId}/boxes/${payload.itemId}`,
       {
         name: payload.description,
       },
