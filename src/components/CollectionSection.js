@@ -3,9 +3,10 @@ import axios from '../api/ClosetSpaceComicsApi';
 import { LocationList } from './LocationList';
 import { BoxList } from './BoxList';
 import { IssueList } from './IssueList';
+import { ItemList } from './ItemList';
 
 export class CollectionSection extends Component {
-  state = { activeLocation: null, boxItemList: [] };
+  state = { activeLocation: null, boxItemList: [], activeBox: null };
 
   getBoxList = async (userId, locationId, boxId) => {
     const response = await axios.get(
@@ -55,13 +56,28 @@ export class CollectionSection extends Component {
     this.getBoxList(0, this.state.activeLocation.id, box.id);
   };
 
+  handleAddBox = async (payload) => {
+    payload.locationId = this.state.activeLocation.id;
+    let newBox = await this.props.HandleAddBox(payload);
+    this.setState({ activeBox: newBox });
+    return newBox;
+  };
+
+  handleEditBox = (payload) => {
+    payload.locationId = this.state.activeLocation.id;
+    this.props.HandleEditBox(payload);
+  };
+
   renderBoXList = () => {
     if (this.state.activeLocation) {
       return (
-        <BoxList
-          Boxes={this.state.activeLocation.boxes}
-          HandleBoxSelection={this.handleBoxSelection}
-        ></BoxList>
+        <ItemList
+          ItemType="box"
+          Items={this.state.activeLocation.boxes}
+          HandleItemSelection={this.handleBoxSelection}
+          HandleAdd={this.handleAddBox}
+          HandleEdit={this.handleEditBox}
+        ></ItemList>
       );
     }
   };
@@ -69,12 +85,13 @@ export class CollectionSection extends Component {
   render() {
     return (
       <section id="section-collection">
-        <LocationList
-          Locations={this.props.Locations}
-          HandleLocationSelection={this.handleLocationSelection}
-          HandleAddLocation={this.handleAddLocation}
-          HandleEditLocation={this.handleEditLocation}
-        ></LocationList>
+        <ItemList
+          ItemType="location"
+          Items={this.props.Locations}
+          HandleItemSelection={this.handleLocationSelection}
+          HandleAdd={this.handleAddLocation}
+          HandleEdit={this.handleEditLocation}
+        ></ItemList>
         {this.renderBoXList()}
         <IssueList
           Issues={this.state.boxItemList}

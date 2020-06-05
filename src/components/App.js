@@ -65,7 +65,7 @@ class App extends Component {
     const response = await axios.post(
       '/user/locations',
       {
-        name: payload.payload.description,
+        name: payload.description,
       },
       {
         headers: {
@@ -97,9 +97,9 @@ class App extends Component {
 
   handleEditLocation = async (payload) => {
     const response = await axios.post(
-      `/user/locations/${payload.payload.locationId}`,
+      `/user/locations/${payload.locationId}`,
       {
-        name: payload.payload.description,
+        name: payload.description,
       },
       {
         headers: {
@@ -119,6 +119,75 @@ class App extends Component {
         if (location.id === newLocation.id) {
           location.name = newLocation.name;
           location.imageUrl = newLocation.imageUrl;
+        }
+        return location;
+      });
+
+      this.setState({ locations: newLocations });
+    }
+  };
+
+  handleAddBox = async (payload) => {
+    const response = await axios.post(
+      `/user/locations/${payload.locationId}/boxes`,
+      {
+        name: payload.description,
+      },
+      {
+        headers: {
+          userId: 0,
+        },
+      }
+    );
+
+    if (response.data === null) {
+      return null;
+    }
+
+    var newBox = {
+      id: response.data.Id,
+      name: response.data.Name,
+      imageUrl: response.data.ImageUrl,
+    };
+
+    this.state.locations.map((location) => {
+      if (location.id === payload.locationId) {
+        location.boxes.unshift(newBox);
+      }
+      return location;
+    });
+    return newBox;
+  };
+
+  handleEditBox = async (payload) => {
+    const response = await axios.post(
+      `/user/locations/${payload.locationId}/boxes/${payload.boxId}`,
+      {
+        name: payload.description,
+      },
+      {
+        headers: {
+          userId: 0,
+        },
+      }
+    );
+
+    if (response.data !== null) {
+      var newBox = {
+        id: response.data.Id,
+        name: response.data.Name,
+        imageUrl: response.data.ImageUrl,
+      };
+
+      var newLocations = this.state.locations.map((location) => {
+        if (location.id === payload.locationId) {
+          location.boxes.map((box) => {
+            if (box.id === newBox.id) {
+              box.name = newBox.name;
+              box.imageUrl = newBox.imageUrl;
+            }
+            return box;
+          });
         }
         return location;
       });
@@ -199,6 +268,8 @@ class App extends Component {
           Locations={this.state.locations}
           HandleAddLocation={this.handleAddLocation}
           HandleEditLocation={this.handleEditLocation}
+          HandleAddBox={this.handleAddBox}
+          HandleEditBox={this.handleEditBox}
         ></CollectionSection>
         <a name="section-purchases"></a>
         <PurchaseSection Purchases={this.state.purchases}></PurchaseSection>

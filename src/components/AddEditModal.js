@@ -14,6 +14,12 @@ export class AddEditModal extends Component {
     description: '',
   };
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.Item !== this.props.Item) {
+      this.setState({ description: newProps.Item.name });
+    }
+  }
+
   handleClickOpen = () => {
     this.setState({ open: true });
   };
@@ -24,15 +30,11 @@ export class AddEditModal extends Component {
 
   saveChanges = () => {
     if (this.props.Action === 'add') {
-      this.props.SaveChanges({
-        payload: { description: this.state.description },
-      });
+      this.props.SaveChanges({ description: this.state.description });
     } else {
       this.props.SaveChanges({
-        payload: {
-          description: this.state.description,
-          locationId: this.props.LocationId,
-        },
+        description: this.state.description,
+        locationId: this.props.LocationId,
       });
       this.handleClose();
     }
@@ -67,7 +69,7 @@ export class AddEditModal extends Component {
               id="description"
               label="Description"
               type="text"
-              value={this.state.name}
+              value={this.state.description}
               onChange={(e) => this.setState({ description: e.target.value })}
               fullWidth
             />
