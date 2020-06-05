@@ -5,13 +5,13 @@ export const HeaderSection = () => {
     <header>
       <nav>
         <div className="row">
-          <div className="col span-2-of-10">
-            {/* Demo
+          {/*<div className="col span-2-of-12">
+             Demo
             <span>
               (<span className="login-link">sign in</span>)
-            </span> */}
-          </div>
-          <div className="col span-8-of-10">
+            </span> 
+          </div>*/}
+          <div className="col span-12-of-12">
             <ul className="main-nav">
               <li>
                 <a href="#section-catalog" className="btn-nav">

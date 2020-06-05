@@ -40,6 +40,14 @@
   .span-1-of-12 {
     width: 15.33%;
   }
+
+  .btn-nav {
+    border-radius: 1.5rem !important;
+    padding: 0.15rem 1rem !important;
+    line-height: 1 !important;
+    margin: 0 5px;
+    font-size: 0.75rem !important;
+  }
 }
 
 @media only screen and (max-width: 500px) {

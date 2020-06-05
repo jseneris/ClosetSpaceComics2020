@@ -132,6 +132,7 @@ nav {
 
 .main-nav {
   list-style: none;
+  text-align: center;
 }
 
 .main-nav li {
