@@ -54,4 +54,21 @@
   .span-1-of-12 {
     width: 32.26%;
   }
+
+  .logo img {
+    height: 60px;
+    width: auto;
+  }
+
+  .btn-nav {
+    border-radius: 1.5rem !important;
+    padding: 0.15rem 1rem !important;
+    line-height: 1 !important;
+    margin: 0 5px;
+    font-size: 0.5rem !important;
+  }
+
+  .main-nav li {
+    margin: 0 -5px;
+  }
 }

@@ -6,10 +6,10 @@ export const HeaderSection = () => {
       <nav>
         <div className="row">
           <div className="col span-2-of-10">
-            Demo
+            {/* Demo
             <span>
               (<span className="login-link">sign in</span>)
-            </span>
+            </span> */}
           </div>
           <div className="col span-8-of-10">
             <ul className="main-nav">

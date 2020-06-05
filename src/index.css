@@ -92,31 +92,17 @@ section {
   margin-right: 15px;
 }
 
-@media screen and (max-width: 520px) {
-  .btn-nav {
-    border-radius: 1.5rem !important;
-    padding: 0.15rem 1rem !important;
-    line-height: 1 !important;
-    margin: 0 5px;
-    font-size: 0.5rem !important;
-  }
-}
-
 .btn-add-edit {
-  margin: 0 2px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
   color: green;
+  cursor: pointer;
 }
 
 /*---------------------------------------*/
 /*Header*/
 /*---------------------------------------*/
-
-.logo {
-  height: 100px;
-  width: auto;
-  float: left;
-  margin-top: 20px;
-}
 
 #hero-banner {
   background-image: url(background_search_desktop.jpg);
@@ -319,12 +305,19 @@ nav {
   position: relative;
 }
 
-.close-button {
-  /* margin: 5px 5px 0 0;
-  float: right; */
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  color: green;
-  cursor: pointer;
+/*---------------------------------------*/
+/*Footer */
+/*---------------------------------------*/
+.logo {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.logo img {
+  height: 100px;
+  width: auto;
+}
+
+.copy {
+  font-size: 70%;
 }

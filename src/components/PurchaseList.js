@@ -20,7 +20,7 @@ export const PurchaseList = (props) => {
 
   return (
     <div className="row purchase-list">
-      <div className="close-button">
+      <div className="btn-add-edit">
         <AddCircleOutline />
       </div>
       <ul>{purchaseList}</ul>

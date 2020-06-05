@@ -69,7 +69,7 @@ export class ItemList extends Component {
   render() {
     return (
       <div className={`row ${this.props.ItemType}-list`}>
-        <div className="close-button">{this.renderButton()}</div>
+        <div className="btn-add-edit">{this.renderButton()}</div>
         <ul>{this.itemList()}</ul>
       </div>
     );
