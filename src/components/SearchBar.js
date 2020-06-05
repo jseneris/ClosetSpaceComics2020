@@ -24,13 +24,13 @@ export const SearchBar = (props) => {
         }}
       />
 
-      <TextField
+      {/* <TextField
         id="text-search"
         label=""
         value="search by title"
         type="text"
         InputProps={{ endAdornment: <SearchButton />, shrink: 'true' }}
-      />
+      /> */}
     </form>
   );
 };
