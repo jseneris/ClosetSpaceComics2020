@@ -60,7 +60,7 @@ export class AddEditModal extends Component {
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title"></DialogTitle>
+          <DialogTitle id="form-dialog-title">Add or Edit</DialogTitle>
           <DialogContent>
             <DialogContentText></DialogContentText>
             <TextField

@@ -52,7 +52,7 @@ export class IssueZoom extends Component {
 
   render() {
     return (
-      <div className="Zoom">
+      <div id="zoom">
         <div className="btn-add-edit" onClick={this.onDivClick}>
           <CancelRounded />
         </div>
