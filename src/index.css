@@ -258,8 +258,9 @@ nav {
   font-weight: bold;
 }
 
-.not-event {
-  pointer-events: none;
+#section-about-us ul {
+  text-align: left;
+  margin-left: 25%;
 }
 
 /*---------------------------------------*/
